@@ -26,8 +26,10 @@ void blink4() {
   wait(0.2);
 }
 
-void allLEDs(){
-      tick1.attach(&blink1, 0.4);   //Ticker that repeats interrupt (blink1) at specified rate(0.7)
+void allLEDs() {
+  tick1.attach(
+      &blink1,
+      0.4); // Ticker that repeats interrupt (blink1) at specified rate(0.7)
   tick2.attach(&blink2, 0.4);
   tick3.attach(&blink3, 0.4);
   tick4.attach(&blink4, 0.4);

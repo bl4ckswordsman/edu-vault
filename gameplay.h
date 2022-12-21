@@ -1,6 +1,11 @@
 #include "mbed.h"
 #include "C12832.h"
+#include <stdio.h>
 AnalogIn ain3(p19);      //Pot 1 will be used
+
+  LocalFileSystem local("local");
+  char filen[] = "/local/scores.txt";
+
 
 char dinoL[] = {
   0x01,0xC0, // .......###......
@@ -167,9 +172,33 @@ bool collision(int yDin, int xCact){
     return false;
 }
 
-void viewAndSaveScore(C12832 &_lcd, int &score){
-    _lcd.locate(45, 20);
-    _lcd.printf("SCORE: %u",score);
-    _lcd.copy_to_lcd();
-}
+void viewAndSaveScore(C12832 &_lcd, int &score) {
 
+  FILE *fileR;
+      int max = 0;
+      int a = 0;
+  if ((fileR = fopen(filen, "r")) != NULL) {
+    fscanf(fileR, "%d,", &a);
+    max = a;
+    while (fscanf(fileR, "%d,", &a) > 0) {
+      if (max < a)
+        max = a;
+    }
+    fclose(fileR);
+  }
+  
+
+  if (score < max) {
+    _lcd.locate(30, 13);
+    _lcd.printf("YOUR SCORE: %u", score);
+    _lcd.locate(34, 22);
+    _lcd.printf("HIGHSCORE: %u", max);
+    _lcd.copy_to_lcd();
+  } else {
+    _lcd.locate(23, 18);
+    _lcd.printf("NEW HIGHSCORE: %u", score);
+  }
+  FILE *fp = fopen(filen, "a");
+  fprintf(fp, "%u \n", score);
+  fclose(fp);
+}

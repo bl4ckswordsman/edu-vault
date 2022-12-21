@@ -7,8 +7,15 @@
 #include "gameplay.h"
 #include "C12832.h"
 //#include "LEDs.h"
-    int dinoX = 2;
-    int dinoY = 17;
+
+
+int dinoX = 2;
+int dinoY = 17;
+
+double speed = 0.2;     //actually delay, higher value gives lower speed
+
+int cactX = 117;
+int cactY = 19;
 
 C12832 lcd(p5, p7, p6, p8, p11);
 
@@ -20,22 +27,24 @@ void centerPress() {
   centerPressed=true;
 }
 
+void printAll() {
+  lcd.cls();
+  printBackG(lcd, centerPressed);
+  printDino(lcd, centerPressed, dinoX, dinoY);
+  lcd.copy_to_lcd();
+}
+
 void jump() {
     for (int i=1; i<4; i++){
         dinoY-=4;
-        wait(0.2);
-        lcd.cls();
-        printBackG(lcd, centerPressed);
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
+        wait(speed);
+        printAll();
     }
+    wait(speed*2);
     for (int i=1; i<4; i++){
         dinoY+=4;
-        wait(0.2);
-        lcd.cls();
-        printBackG(lcd, centerPressed);
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
+        wait(speed);
+        printAll();
     }
 }
 
@@ -58,42 +67,7 @@ int main() {
     if (up){
         jump();
     }
-        /*dinoY-=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY-=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY-=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY-=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-
-        dinoY+=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY+=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY+=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-        dinoY+=4;
-        printDino(lcd, centerPressed, dinoX, dinoY);
-        lcd.copy_to_lcd();
-        wait(0.2);
-
-    }*/
-
+ 
     wait(0.01);
     lcd.copy_to_lcd();
   }

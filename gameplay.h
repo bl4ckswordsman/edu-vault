@@ -88,3 +88,21 @@ void printDino(C12832 &_lcd, bool &centPressed, int &xLoc, int &yLoc) {
   }
 }
 
+void printCactusL(C12832 &_lcd, int &xLoc, int &yLoc) {
+  _lcd.print_bm(cactusLbm, xLoc, yLoc);
+}
+
+void printCactusD(C12832 &_lcd, int &xLoc, int &yLoc) {
+  _lcd.print_bm(cactusDbm, xLoc, yLoc);
+}
+
+void printCactus(C12832 &_lcd, bool &centPressed, int &xLoc, int &yLoc) {
+  if (centPressed) {
+    if (darkThemeChosen3()) {
+      printCactusD(_lcd, xLoc, yLoc);
+    } else {
+      printCactusL(_lcd, xLoc, yLoc);
+    }
+  }
+}
+

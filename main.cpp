@@ -4,47 +4,48 @@
 #include "mbed.h"
 #include "startScreen.h"
 #include "background.h"
-#include "LEDs.h"
+#include "gameplay.h"
+#include "C12832.h"
+//#include "LEDs.h"
 
+C12832 lcd(p5, p7, p6, p8, p11);
 
+InterruptIn center2(p14);
+InterruptIn up(p15);
+bool centerPressed = false;
 
-
-Ticker tick1, tick2, tick3, tick4, tick5;
-DigitalOut led1(LED1);
-DigitalOut led2(LED2);
-DigitalOut led3(LED3);
-DigitalOut led4(LED4);
-
-void blink1() {
-  led1 = !led1;
-  wait(0.2);
+void centerPress() {
+  centerPressed=true;
 }
 
-void blink2() {
-  led2 = !led2;
-  wait(0.2);
+void jump(int &y) {
+    for (int i=1; i<16; i++){
+        y-=1;
+        wait(0.2);
+    }
+    for (int i=1; i<16; i++){
+        y+=1;
+        wait(0.2);
+    }
 }
 
-void blink3() {
-  led3 = !led3;
-  wait(0.2);
-}
-
-void blink4() {
-  led4 = !led4;
-  wait(0.2);
-}
 
 int main() {
-  tick1.attach(&blink1, 0.4);   //Ticker that repeats interrupt (blink1) at specified rate(0.7)
-  tick2.attach(&blink2, 0.4);
-  tick3.attach(&blink3, 0.4);
-  tick4.attach(&blink4, 0.4);
+    int dinoX = 2;
+    int dinoY = 17;
+  // allLEDs();
 
-  tick5.attach(&printBackG, 0.01);
-  
+  center2.fall(&centerPress);
+  up.fall(jump(dinoY));
 
   while (1) {
-
+    if (centerPressed) {
+      printBackG(lcd, centerPressed);
+      printDino(lcd, centerPressed, dinoX, dinoY);
+    } else {
+      printStartS(lcd, centerPressed);
+    }
+    wait(0.01);
+    lcd.copy_to_lcd();
   }
 }

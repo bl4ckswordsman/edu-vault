@@ -8,11 +8,13 @@
 #include "C12832.h"
 //#include "LEDs.h"
 
+Ticker cactT;
 
 int dinoX = 2;
 int dinoY = 17;
 
 double speed = 0.2;     //actually delay, higher value gives lower speed
+int cactSpeed = 2;
 
 int cactX = 117;
 int cactY = 19;
@@ -31,6 +33,7 @@ void printAll() {
   lcd.cls();
   printBackG(lcd, centerPressed);
   printDino(lcd, centerPressed, dinoX, dinoY);
+  printCactus(lcd, centerPressed, cactX, cactY);
   lcd.copy_to_lcd();
 }
 
@@ -48,8 +51,13 @@ void jump() {
     }
 }
 
+void cactMove() {
+    cactX -= cactSpeed;
+}
+
 
 int main() {
+    cactT.attach(&cactMove, speed);
 
   // allLEDs();
 
@@ -58,8 +66,7 @@ int main() {
 
   while (1) {
     if (centerPressed) {
-      printBackG(lcd, centerPressed);
-      printDino(lcd, centerPressed, dinoX, dinoY);
+      printAll();
     } else {
       printStartS(lcd, centerPressed);
     }

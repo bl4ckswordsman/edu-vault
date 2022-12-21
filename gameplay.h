@@ -155,9 +155,21 @@ void printGO(C12832 &_lcd, bool &centPressed) {
       printGameOL(_lcd);
     }
   }
+  _lcd.copy_to_lcd();
 }
 
-bool collision(C12832 &_lcd, int &x1, int &y1, int &x2, int &y2){
-    return true;
+bool collision(int yDin, int xCact){
+    if (xCact<=12 && xCact>3){
+        if ((yDin+12)>16){
+            return true;
+        }
+    }
+    return false;
+}
+
+void viewAndSaveScore(C12832 &_lcd, int &score){
+    _lcd.locate(45, 20);
+    _lcd.printf("SCORE: %u",score);
+    _lcd.copy_to_lcd();
 }
 

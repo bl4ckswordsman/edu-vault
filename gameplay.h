@@ -1,6 +1,8 @@
 #include "mbed.h"
 #include "C12832.h"
 #include <stdio.h>
+
+#include "LEDs.h"
 AnalogIn ain3(p19);      //Pot 1 will be used
 
   LocalFileSystem local("local");
@@ -89,7 +91,6 @@ char gameOD[] = {
 };
 
 
-
 bool darkThemeChosen3() {
   if (ain3.read() > 0.0 && ain3.read() < 0.5) {
     return false;
@@ -143,13 +144,9 @@ void printCactus(C12832 &_lcd, bool &centPressed, int &xLoc, int &yLoc) {
   }
 }
 
-void printGameOL(C12832 &_lcd) {
-  _lcd.print_bm(gameOLbm, 31, 2);
-}
+void printGameOL(C12832 &_lcd) { _lcd.print_bm(gameOLbm, 31, 2); }
 
-void printGameOD(C12832 &_lcd) {
-  _lcd.print_bm(gameODbm, 31, 2);
-}
+void printGameOD(C12832 &_lcd) { _lcd.print_bm(gameODbm, 31, 2); }
 
 void printGO(C12832 &_lcd, bool &centPressed) {
   _lcd.cls();
@@ -163,32 +160,33 @@ void printGO(C12832 &_lcd, bool &centPressed) {
   _lcd.copy_to_lcd();
 }
 
-bool collision(int yDin, int xCact){
-    if (xCact<=12 && xCact>3){
-        if ((yDin+12)>16){
-            return true;
-        }
+bool collision(int yDin, int xCact) {
+  if (xCact <= 12 && xCact > 3) {
+    if ((yDin + 12) > 16) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 void viewAndSaveScore(C12832 &_lcd, int &score) {
 
   FILE *fileR;
-      int max = 0;
-      int a = 0;
+  int max = 0;
+  int a = 0;
   if ((fileR = fopen(filen, "r")) != NULL) {
     fscanf(fileR, "%d,", &a);
     max = a;
     while (fscanf(fileR, "%d,", &a) > 0) {
-      if (max < a)
+      if (max < a) {
         max = a;
+      }
     }
     fclose(fileR);
   }
-  
 
   if (score < max) {
+    allLEDs();
     _lcd.locate(30, 13);
     _lcd.printf("YOUR SCORE: %u", score);
     _lcd.locate(34, 22);

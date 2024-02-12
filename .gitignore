@@ -1,0 +1,11 @@
+?clangd
+?mbed
+?cache
+mbed
+compile_commands?json
+BUILD
+.mbed
+compile_commands.json
+.clangd
+.cache
+C12832

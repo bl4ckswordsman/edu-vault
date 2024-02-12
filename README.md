@@ -1,1 +1,11 @@
-# ET095G_Project [![Codacy Badge](https://app.codacy.com/project/badge/Grade/39a3abd75c4449a38c3cb5271f14811f)](https://www.codacy.com/gh/bl4ckswordsman/ET095G_Project/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bl4ckswordsman/ET095G_Project&amp;utm_campaign=Badge_Grade)
+# Edu-Vault: An open repository of educational resources from my uni classes
+
+## `IG028G`Introduction to Project Based Product Development
+
+[Therma Pro](/RESOURCES/IG028G-therma-pro-app)
+: A simple Android companion app prototype used for visual demonstration of a group project about an engine heater.
+
+## `ET095G`Introduction to Embedded System Programming
+
+[DinoJump](/RESOURCES/ET095G-project)
+: A game written in C for LPC1768 mbed device.

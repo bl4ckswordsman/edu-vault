@@ -9,3 +9,9 @@
 
 [DinoJump](/RESOURCES/ET095G-project)
 : A game written in C for LPC1768 mbed device.
+
+
+<br>
+<br>
+
+[![Visits Badge](https://badges.pufler.dev/visits/bl4ckswordsman/edu-vault/)](https://github.com/bl4ckswordsman/edu-vault/)

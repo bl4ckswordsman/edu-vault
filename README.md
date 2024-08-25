@@ -1,14 +1,19 @@
-# edu-vault: An open repository of educational resources from uni classes
+# edu-vault: An open repository of educational resources from uni classes & more
 
-## `IG028G`Introduction to Project Based Product Development
-
+### `IG028G`Introduction to Project Based Product Development
 [Therma Pro](/RESOURCES/IG028G-therma-pro-app)
 : A simple Android companion app prototype used for visual demonstration of a group project about an engine heater.
 
-## `ET095G`Introduction to Embedded System Programming
-
+### `ET095G`Introduction to Embedded System Programming
 [DinoJump](/RESOURCES/ET095G-project)
 : A game written in C for LPC1768 mbed device.
+
+
+## Self-study
+
+### Rust course
+[Rust learning path](/RESOURCES/self-study/rust-learning-path)
+: A Rust course by Microsoft Learn.
 
 
 <br>

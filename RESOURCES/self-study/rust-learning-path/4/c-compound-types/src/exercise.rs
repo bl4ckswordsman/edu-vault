@@ -47,3 +47,53 @@ fn car_factory(color: String, motor: Transmission, roof: bool, miles: u32) -> Ca
         mileage: miles, // todo!("Replace `mileage: miles` with `age` tuple field, call `car_quality()` with `miles` as input argument");
     }
 }
+
+fn main() {
+    // Create car color array
+    let colors = todo!("Set the enum values: 0 = Blue, 1 = Green, 2 = Red, 3 = Silver");
+
+    // Declare the car type and initial values
+    let mut car: Car = todo!("Create `car` as a `Car` struct");
+    let mut engine: Transmission =
+        todo!("Declare `engine` as a `Transmission` enum, initialize to `Manual`");
+
+    // Order 3 cars, one car for each type of transmission
+
+    // Car order #1: New, Manual, Hard top
+    car = car_factory(
+        String::from(todo!("Index into the `colors()` array")),
+        engine,
+        true,
+        0,
+    );
+    println!(
+        "Car order 1: {:?}, Hard top = {}, {:?}, {}, {} miles",
+        car.age.0, car.roof, car.motor, car.color, car.age.1
+    );
+
+    // Car order #2: Used, Semi-automatic, Convertible
+    engine = Transmission::SemiAuto;
+    car = car_factory(
+        String::from(todo!("Index into the `colors()` array")),
+        engine,
+        false,
+        100,
+    );
+    println!(
+        "Car order 2: {:?}, Hard top = {}, {:?}, {}, {} miles",
+        car.age.0, car.roof, car.motor, car.color, car.age.1
+    );
+
+    // Car order #3: Used, Automatic, Hard top
+    engine = Transmission::Automatic;
+    car = car_factory(
+        String::from(todo!("Index into the `colors()` array")),
+        engine,
+        true,
+        200,
+    );
+    println!(
+        "Car order 3: {:?}, Hard top = {}, {:?}, {}, {} miles",
+        car.age.0, car.roof, car.motor, car.color, car.age.1
+    );
+}

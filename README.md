@@ -14,6 +14,8 @@
 ### Rust course
 [Rust learning path](/RESOURCES/self-study/rust-learning-path)
 : A Rust course by Microsoft Learn.
+## Svelte course
+[Svelte tutorial](/RESOURCES/self-study/svelte-tutorial) : A Svelte course by [Svelte Learn](https://learn.svelte.dev/).
 
 
 <br>

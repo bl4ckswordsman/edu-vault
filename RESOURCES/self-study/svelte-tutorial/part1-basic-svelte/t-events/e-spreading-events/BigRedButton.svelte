@@ -2,7 +2,7 @@
     let props = $props();
 </script>
 
-<button> Push </button>
+<button {...props}> Push </button>
 
 <style>
     button {

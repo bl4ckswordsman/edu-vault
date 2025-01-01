@@ -2,6 +2,6 @@
     let name = $state("world");
 </script>
 
-<input value={name} />
+<input bind:value={name} />
 
 <h1>Hello {name}!</h1>

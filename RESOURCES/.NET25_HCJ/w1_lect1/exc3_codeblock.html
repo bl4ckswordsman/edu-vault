@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<div class="code-container">
+
+    <head>
+        <link rel="stylesheet" href="styles3.css">
+    </head>
+    <div class="code-row">
+        <span class="line-number">1</span>
+        <span class="code-text">
+            <span class="blue">function</span> <span class="yellow">setPixel</span>(imgData, x, y, r=<span
+                class="yellow">0</span>, g=<span class="yellow">0</span>, b=<span class="yellow">0</span>, a=<span
+                class="yellow">255</span>) {
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">2</span>
+        <span class="code-text">
+            &nbsp;&nbsp;<span class="blue">const</span> {data, width, height} = imgData;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">3</span>
+        <span class="code-text">
+            &nbsp;&nbsp;x = <span class="yellow">Math</span>.<span class="yellow">floor</span>(x); y = <span
+                class="yellow">Math</span>.<span class="yellow">floor</span>(y);
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">4</span>
+        <span class="code-text">
+            &nbsp;&nbsp;<span class="purple">if</span> (x < <span class="yellow">0</span> || y < <span class="yellow">
+            0</span> || x >= width || y >= height) <span class="purple">return</span>;
+            </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">5</span>
+        <span class="code-text">
+            &nbsp;&nbsp;<span class="blue">const</span> i = (y * width + x) * <span class="yellow">4</span>;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">6</span>
+        <span class="code-text">
+            &nbsp;&nbsp;data[i] = r;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">7</span>
+        <span class="code-text">
+            &nbsp;&nbsp;data[i + <span class="yellow">1</span>] = g;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">8</span>
+        <span class="code-text">
+            &nbsp;&nbsp;data[i + <span class="yellow">2</span>] = b;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">9</span>
+        <span class="code-text">
+            &nbsp;&nbsp;data[i + <span class="yellow">3</span>] = a;
+        </span>
+    </div>
+
+    <div class="code-row">
+        <span class="line-number">10</span>
+        <span class="code-text">
+            }
+        </span>
+    </div>
+
+</div>
+
+</html>

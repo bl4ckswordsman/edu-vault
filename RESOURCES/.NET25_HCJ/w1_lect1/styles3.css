@@ -1,0 +1,99 @@
+/* --- Version 1 --- */
+body {
+    background-color: #181818;
+    color: #ffffff;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    margin: 0;
+}
+
+.code-container {
+    background-color: #0e0e0e;
+    border: 1px solid #28282a;
+    border-radius: 1em;
+    max-width: 700px;
+    width: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+/* --- Version 3 --- */
+.code-row {
+    display: flex;
+    padding: 2px 20px;
+}
+
+.code-row:hover {
+    background-color: #212123;
+}
+
+.line-number {
+    color: #6e7681;
+    min-width: 30px;
+    text-align: right;
+    margin-right: 20px;
+
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.code-row:hover .line-number {
+    color: #cccccc;
+}
+
+/* --- Version 2 --- */
+.purple {
+    color: #cd7ac6;
+}
+
+.blue {
+    color: #4b94e8;
+}
+
+.yellow {
+    color: #f4f4a9;
+}
+
+/* --- Version 4 --- */
+::selection {
+    background-color: #686869;
+}
+
+.purple::selection {
+    background-color: #cd7ac6;
+    color: #000000;
+}
+
+.blue::selection {
+    background-color: #4b94e8;
+    color: #000000;
+}
+
+.yellow::selection {
+    background-color: #f4f4a9;
+    color: #000000;
+}
+
+
+/* --- Version 5 --- */
+.code-row:hover ::selection {
+    background-color: #818182;
+}
+
+.code-row:hover .blue::selection {
+    background-color: #64adff;
+    color: #000000;
+}
+
+.code-row:hover .purple::selection {
+    background-color: #eb8ee3;
+    color: #000000;
+}
+
+.code-row:hover .yellow::selection {
+    background-color: #ffffe5;
+    color: #000000;
+}

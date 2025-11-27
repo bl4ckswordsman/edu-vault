@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaktärsblad - Gummi Anksson</title>
+    <style>
+        :root {
+            --primary-color: #ff7f50;
+            --border-color: #d1d5db;
+            --text-color: #374151;
+            --bg-color: #ffffff;
+            --input-bg: #ffffff;
+            --radius: 8px;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            background-color: #f3f4f6;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            font-size: clamp(12px, 2vw, 16px);
+        }
+
+        .container {
+            background-color: var(--bg-color);
+            width: 100%;
+            max-width: 900px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: clamp(0.5rem, 3vw, 2rem);
+            border: 1px solid var(--border-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--text-color);
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 127, 80, 0.2);
+        }
+
+        label {
+            display: block;
+            font-size: 0.85em;
+            color: #6b7280;
+            margin-bottom: 0.2rem;
+        }
+
+        .header-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 1px solid #eee;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .char-name-group input {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 30% 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .stat-column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .stat-box {
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem 0.5rem 0.5rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .stat-label {
+            position: absolute;
+            top: -0.7em;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-color);
+            padding: 0 0.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .stat-dual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .stat-dual input {
+            width: 3rem;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-size: inherit;
+        }
+
+        .stat-single {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .stat-mod {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 2.5rem;
+            height: 2.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: -0.5rem;
+            background: white;
+            z-index: 2;
+        }
+
+        .inventory-section {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1rem;
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        .inventory-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inventory-table th {
+            text-align: left;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .inventory-table th:not(:first-child),
+        .inventory-table td:not(:first-child) {
+            text-align: right;
+        }
+
+        .inventory-table td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .header-section {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-box-row {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: space-between;
+            }
+
+            .stat-box-row .stat-box {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-box-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header-section">
+            <div class="char-name-group">
+                <label>Karaktärsnamn</label>
+                <input type="text" value="Gummi Anksson" placeholder="Namn">
+            </div>
+
+            <div class="stats-grid">
+                <div>
+                    <label>Level</label>
+                    <input type="number" value="3">
+                </div>
+                <div>
+                    <label>Erfarenhetspoäng</label>
+                    <input type="number" value="8453">
+                </div>
+                <div>
+                    <label>Klass</label>
+                    <input type="text" value="Ankare">
+                </div>
+                <div>
+                    <label>Anktyp</label>
+                    <input type="text" value="Gul Gummianka">
+                </div>
+                <div>
+                    <label>Bakgrund</label>
+                    <input type="text" value="Vanlig gummianka">
+                </div>
+                <div>
+                    <label>Spelarnamn</label>
+                    <input type="text" value="Oscar">
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="stat-column">
+                <div class="stat-box">
+                    <span class="stat-label">Fjäderhälsa</span>
+                    <div class="stat-dual">
+                        <input type="number" value="5"> / <input type="number" value="10">
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">Kvackmagi</span>
+                    <div class="stat-dual">
+                        <input type="number" value="6"> / <input type="number" value="7">
+                    </div>
+                </div>
+
+                <div class="stat-box-row" style="display:contents">
+                    <div class="stat-box stat-single">
+                        <span class="stat-label">Näbbstyrka</span>
+                        <input class="stat-value" value="19">
+                        <input class="stat-mod" value="4">
+                    </div>
+
+                    <div class="stat-box stat-single">
+                        <span class="stat-label">Fluffighet</span>
+                        <input class="stat-value" value="10">
+                        <input class="stat-mod" value="0">
+                    </div>
+
+                    <div class="stat-box stat-single">
+                        <span class="stat-label">Kvackvolym</span>
+                        <input class="stat-value" value="12">
+                        <input class="stat-mod" value="1">
+                    </div>
+                </div>
+            </section>
+
+            <section class="inventory-section">
+                <span class="stat-label" style="left: 3rem; transform: none;">Föremål</span>
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Namn</th>
+                            <th>Antal</th>
+                            <th>Värde</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vit brödbit</td>
+                            <td>13</td>
+                            <td>99999</td>
+                        </tr>
+                        <tr>
+                            <td>Fin sten</td>
+                            <td>1</td>
+                            <td>104</td>
+                        </tr>
+                        <tr>
+                            <td>Stulna mynt</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Hamburgerficka</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+</html>

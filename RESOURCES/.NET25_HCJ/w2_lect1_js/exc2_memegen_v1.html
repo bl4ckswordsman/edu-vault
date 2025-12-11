@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="exc2.css">
+</head>
+
+<body>
+
+    <h1>Meme Generator</h1>
+
+    <div class="main-layout">
+        <div class="controls">
+            <div class="input-group">
+                <label for="imageInput">Välj bild:</label>
+                <input type="file" id="imageInput" accept="image/png, image/jpeg">
+            </div>
+
+            <div class="input-group">
+                <label for="topTextInput">Övre text:</label>
+                <input type="text" id="topTextInput" placeholder="Skriv något här...">
+            </div>
+
+            <div class="input-group">
+                <label for="bottomTextInput">Undre text:</label>
+                <input type="text" id="bottomTextInput" placeholder="...och här">
+            </div>
+
+            <div class="input-group">
+                <label for="textSizeInput">Textstorlek (px):</label>
+                <input type="number" id="textSizeInput" value="40" min="10" max="100">
+            </div>
+        </div>
+
+        <div class="meme-preview-container">
+            <div id="memeOutput">
+                <img id="memeImage" src="" alt="Din meme kommer synas här">
+                <div id="topTextOutput" class="meme-text top"></div>
+                <div id="bottomTextOutput" class="meme-text bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="exc2.js"></script>
+</body>
+
+</html>

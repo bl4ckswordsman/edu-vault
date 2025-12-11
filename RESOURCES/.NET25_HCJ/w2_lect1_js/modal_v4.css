@@ -1,0 +1,28 @@
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    transform: scale(0.9);
+
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, display 0.3s allow-discrete;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease-out;
+}
+
+dialog.is-open {
+    opacity: 1;
+    transform: scale(1);
+
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+dialog.is-open::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.15s ease-out;
+}
